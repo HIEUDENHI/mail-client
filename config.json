@@ -1,0 +1,33 @@
+{
+    "General": {
+        "Username": "Hieu Tran <trantrunghieu01042004@gmail.com>",
+        "Password": "ahihi",
+        "MailServer": "127.0.0.1",
+        "SMTP": 2225,
+        "POP3": 3335,
+        "Autoload": 10
+    },
+    "Filter": {
+        "From": [
+            "ahihi@testing.com",
+            "ahuu@testing.com"
+        ],
+        "ToFolder_From": "Project",
+        "Subject": [
+            "urgent",
+            "ASAP"
+        ],
+        "ToFolder_Subject": "Important",
+        "Content": [
+            "report",
+            "meeting"
+        ],
+        "ToFolder_Content": "Work",
+        "Spam": [
+            "virus",
+            "hack",
+            "crack"
+        ],
+        "ToFolder_Spam": "Spam"
+    }
+}
