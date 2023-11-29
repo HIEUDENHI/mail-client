@@ -17,9 +17,9 @@ async def task1(config):
         # Use asyncio.to_thread to run input in a separate thread
         choice = await asyncio.to_thread(input, "Bạn chọn: ")
         if choice == '1':
-            send_email_console(config)
+            await send_email_console(config)
         elif choice == '2':
-            view_emails(config)
+            await view_emails(config)
         elif choice == '3':
             print("Thoát chương trình")
             break

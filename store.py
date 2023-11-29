@@ -3,6 +3,7 @@ import time
 import random
 import string
 import json
+import re
 from json.decoder import JSONDecodeError
 
 
@@ -41,12 +42,12 @@ def update_config(username, password, mail_server, smtp_port, pop3_port, autoloa
         }
     }
 
-    with open("./config.json", 'w') as file:
+    with open("D:/Desktop/client/config.json", 'w') as file:
         json.dump(config_data, file, indent=4)
 
 
 def load_config():
-    with open("./config.json", 'r') as file:
+    with open("D:/Desktop/client/config.json", 'r') as file:
         config = json.load(file)
     return config
 
@@ -85,7 +86,11 @@ def createFile(msg, file_path, file_name,config):
             }
                 attachments.append(attachment)
         data["Attachment"] = attachments
-    if data["From"] in config["Filter"]["From"]:
+    else:
+        data["Content"] = msg.get_payload()
+        data["Attachment"]=[]    
+    match = re.search(r'<([^>]+)>', data["From"])
+    if match.group(1) in config["Filter"]["From"]:
         file_path += "/" + config["Filter"]["ToFolder_From"]
     elif any(keyword in data["Subject"] for keyword in config["Filter"]["Subject"]):
         file_path += "/" + config["Filter"]["ToFolder_Subject"]
@@ -105,7 +110,7 @@ def createFile(msg, file_path, file_name,config):
     with open(file_path, 'w') as file:
         json.dump(data, file)
 
-    update_summary_file(file_name, data["To"], data["Subject"], summary_file_path)
+    update_summary_file(file_name, data["From"], data["Subject"], summary_file_path)
 
 
 def update_summary_file(msg_file_name, sender_name, subject, summary_file_path):

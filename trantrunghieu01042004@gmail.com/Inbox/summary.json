@@ -1,0 +1,74 @@
+[
+  {
+    "fileName": "msg_20231129214734_iOnIUTWI.json",
+    "sender": "Hieu Tran <trantrunghieu01042004@gmail.com>",
+    "subject": "test1",
+    "isRead": true
+  },
+  {
+    "fileName": "msg_20231129215114_WuVXJKZD.json",
+    "sender": "Hieu Tran <trantrunghieu01042004@gmail.com>",
+    "subject": "test2",
+    "isRead": true
+  },
+  {
+    "fileName": "msg_20231129215321_Dgr29r14.json",
+    "sender": "Tran Trung Hieu <hello@gmail.com>",
+    "subject": "test3",
+    "isRead": true
+  },
+  {
+    "fileName": "msg_20231129222246_A8paDJej.json",
+    "sender": "Tran Trung Hieu <hello@gmail.com>",
+    "subject": "test4",
+    "isRead": true
+  },
+  {
+    "fileName": "msg_20231129222600_4n2J1Xud.json",
+    "sender": "Hieu Tran <trantrunghieu01042004@gmail.com>",
+    "subject": "test5",
+    "isRead": true
+  },
+  {
+    "fileName": "msg_20231129230007_LOcS88V1.json",
+    "sender": "Tran Trung Hieu <hello@gmail.com>",
+    "subject": "test lan n",
+    "isRead": true
+  },
+  {
+    "fileName": "msg_20231129230857_xaGiNznE.json",
+    "sender": "Hieu Tran <trantrunghieu01042004@gmail.com>",
+    "subject": "",
+    "isRead": true
+  },
+  {
+    "fileName": "msg_20231129232010_PqevlmgF.json",
+    "sender": "Hieu Tran <trantrunghieu01042004@gmail.com>",
+    "subject": "test 9",
+    "isRead": true
+  },
+  {
+    "fileName": "msg_20231129232250_TiJ6cah6.json",
+    "sender": "Hieu Tran <trantrunghieu01042004@gmail.com>",
+    "subject": "testpop",
+    "isRead": false
+  },
+  {
+    "fileName": "msg_20231129232330_AuLrxmJk.json",
+    "sender": "Hieu Tran <trantrunghieu01042004@gmail.com>",
+    "subject": "teafadasd",
+    "isRead": false
+  },
+  {
+    "fileName": "msg_20231129232648_YxXNH84P.json",
+    "sender": "Hieu Tran <ahihi@testing.com>",
+    "subject": "hi",
+    "isRead": false
+  },
+  {
+    "fileName": "msg_20231129233334_azML87t4.json",
+    "sender": "Hieu Tran <ahihi@testing.com>",
+    "subject": "tesst",
+    "isRead": true
+  }
+]

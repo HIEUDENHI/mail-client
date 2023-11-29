@@ -1,0 +1,1 @@
+match = re.search(r'<([^>]+)>', config["General"]["Username"])
