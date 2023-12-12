@@ -7,13 +7,16 @@ import re
 from store import update_config
 
 
+
+
+
 async def task1(config):
     while True:
         print("Vui lòng chọn Menu:")
         print("1. Để gửi email")
         print("2. Để xem danh sách các email đã nhận")
         print("3. Thoát")
-
+       
         # Use asyncio.to_thread to run input in a separate thread
         choice = await asyncio.to_thread(input, "Bạn chọn: ")
         if choice == '1':
@@ -46,11 +49,5 @@ async def main():
 
 
 if __name__ == "__main__":
-    # username=input("Nhap username: ")
-    # password=input("Nhap password: ")
-    # mailserver=input("Nhap mail server: ")
-    # SMTPport=input("Nhap SMTP port: ")
-    # POP3port=input("Nhap POP3 port: ")
-    # autoload=input("Nhap auto load: ")
-    # update_config(username,password,mailserver,SMTPport,POP3port,autoload)
+    
     asyncio.run(main())

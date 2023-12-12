@@ -40,7 +40,8 @@ def send_email(user_name, to_emails, cc_emails, bcc_emails, subject, message, sm
     response = smtp_socket.recv(1024).decode()
 
     # Split the recipient lists into individual email addresses
-    to_email_list = to_emails.split(", ")
+    to_email_list = to_emails.split(", ")    
+    
     cc_email_list = cc_emails.split(", ")
     bcc_email_list = bcc_emails.split(", ")
 
@@ -55,6 +56,7 @@ def send_email(user_name, to_emails, cc_emails, bcc_emails, subject, message, sm
     # Send DATA command to indicate start of message body
     smtp_socket.send('DATA\r\n'.encode())
     response = smtp_socket.recv(1024).decode()
+    
     
     
     msg = MIMEMultipart()
@@ -120,7 +122,7 @@ def receive_email(user_name,password,pop3_server,port,config):
         response_parts = message_content.split(b'\n', 1)
         msg = message_from_bytes(response_parts[1])
         match = re.search(r'<([^>]+)>', config["General"]["Username"])
-        filePath=f"D:/Desktop/client/{match.group(1)}"
+        filePath=f"D:/Desktop/client/database/{match.group(1)}"
         fileName=generate_unique_filename("msg","json")
         createFile(msg,filePath,fileName,config)
         pop3_socket.send(f"DELE {mail_number}\r\n".encode())

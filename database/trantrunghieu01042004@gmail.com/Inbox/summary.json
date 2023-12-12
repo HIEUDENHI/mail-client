@@ -51,24 +51,36 @@
     "fileName": "msg_20231129232250_TiJ6cah6.json",
     "sender": "Hieu Tran <trantrunghieu01042004@gmail.com>",
     "subject": "testpop",
-    "isRead": false
+    "isRead": true
   },
   {
     "fileName": "msg_20231129232330_AuLrxmJk.json",
     "sender": "Hieu Tran <trantrunghieu01042004@gmail.com>",
     "subject": "teafadasd",
-    "isRead": false
+    "isRead": true
   },
   {
     "fileName": "msg_20231129232648_YxXNH84P.json",
     "sender": "Hieu Tran <ahihi@testing.com>",
     "subject": "hi",
-    "isRead": false
+    "isRead": true
   },
   {
     "fileName": "msg_20231129233334_azML87t4.json",
     "sender": "Hieu Tran <ahihi@testing.com>",
     "subject": "tesst",
+    "isRead": true
+  },
+  {
+    "fileName": "msg_20231202214346_cUJvGj7A.json",
+    "sender": "Hieu Tran <trantrunghieu01042004@gmail.com>",
+    "subject": "hi",
+    "isRead": true
+  },
+  {
+    "fileName": "msg_20231202233339_ISsyUdnE.json",
+    "sender": "Hieu Tran <trantrunghieu01042004@gmail.com>",
+    "subject": "helo",
     "isRead": true
   }
 ]

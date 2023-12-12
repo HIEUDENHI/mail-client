@@ -6,23 +6,30 @@ import base64
 import asyncio
 from store import update_mail_status
 from store import load_config
+
+def show_summary(folder,summary_data):
+    print(f"Đây là danh sách email trong {folder} folder")
+    for idx, file_info in enumerate(summary_data, start=1):
+        if not file_info["isRead"]:
+            print(f"{idx}. (chưa đọc) <{file_info['sender']}>, {file_info['subject']}")
+        else:
+            print(f"{idx}. <{file_info['sender']}>, {file_info['subject']}")
+    
+
 async def show_email(folder,config):
     match = re.search(r'<([^>]+)>', config["General"]["Username"])
-    summary_file = f"D:/Desktop/client/{match.group(1)}/{folder}/summary.json"
-    
+    summary_file = f"D:/Desktop/client/database/{match.group(1)}/{folder}/summary.json"
+    if os.path.exists(summary_file):
+        with open(summary_file, 'r') as summary_file1:
+            summary_data = json.load(summary_file1)
+            
+    else:
+        print("Chưa có mail để show")
+        return
+    show_summary(folder,summary_data)
     while True: 
-        if os.path.exists(summary_file):
-            with open(summary_file, 'r') as summary_file1:
-                print(f"Đây là danh sách email trong {folder} folder")
-                summary_data = json.load(summary_file1)
-        else:
-            print("Chưa có mail để show")
-            return
-        for idx, file_info in enumerate(summary_data, start=1):
-            if not file_info["isRead"]:
-                print(f"{idx}. (chưa đọc) <{file_info['sender']}>, {file_info['subject']}")
-            else:
-                print(f"{idx}. <{file_info['sender']}>, {file_info['subject']}")
+        with open(summary_file, 'r') as summary_file1:
+            summary_data = json.load(summary_file1)
         choice =await asyncio.to_thread(input, "Bạn muốn đọc Email thứ mấy? (nhấn enter để thoát hoặc nhấn 0 để xem lại danh sách email): ")
         if choice.isdigit():
             choice = int(choice)
@@ -32,7 +39,7 @@ async def show_email(folder,config):
                 update_mail_status(summary_file,selected_email)
                 print(f"Bạn đã chọn đọc Email thứ {choice}.")
                 
-                dataFile=f"D:/Desktop/client/{match.group(1)}/{folder}/"+selected_email["fileName"]
+                dataFile=f"D:/Desktop/client/database/{match.group(1)}/{folder}/"+selected_email["fileName"]
                 with open(dataFile, 'r') as file:
                     mail_data = json.load(file)
                 print(f"To: {mail_data['To']}")
@@ -45,6 +52,9 @@ async def show_email(folder,config):
 
                     if save_attachment.lower() == "có":
                         save_path = await asyncio.to_thread(input, "Cho biết đường dẫn bạn muốn lưu: ")
+                        while not os.path.exists(save_path):
+                            print("Đường dẫn không tồn tại. Nhập đường dẫn khác")
+                            save_path = await asyncio.to_thread(input, "Cho biết đường dẫn bạn muốn lưu: ")
 
                         for attachment in mail_data["Attachment"]:
                             filename = attachment["Filename"]
@@ -62,12 +72,13 @@ async def show_email(folder,config):
                       # Thoát khỏi vòng lặp while khi đã chọn một email
             elif choice == 0:
             # Người dùng muốn xem lại danh sách email, tiếp tục lặp
-                continue
+                os.system('cls')
+                show_summary(folder,summary_data)
             else:
                 print("Lựa chọn không hợp lệ.")
-        else:
-            print("Đã thoát khỏi chương trình.")
-            break  # Thoát khỏi vòng lặp while khi người dùng nhấn Enter để thoát
+        elif choice=="":
+            os.system('cls')
+            break  
         
     
     
@@ -133,4 +144,5 @@ async def send_email_console(config):
         # Code xử lý việc gửi email sẽ được thêm vào ở đây
     send_email(config["General"]["Username"], to, cc, bcc, subject, content, config["General"]["MailServer"], config["General"]["SMTP"], match.group(1), attachments)
     print("\nĐã gửi email thành công\n")
+    os.system('cls')
 

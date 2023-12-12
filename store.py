@@ -91,7 +91,7 @@ def createFile(msg, file_path, file_name,config):
         data["Attachment"]=[]    
     match = re.search(r'<([^>]+)>', data["From"])
     if match.group(1) in config["Filter"]["From"]:
-        file_path += "/" + config["Filter"]["ToFolder_From"]
+        file_path += "/" + config["Filter"]["ToFolder_From"]  
     elif any(keyword in data["Subject"] for keyword in config["Filter"]["Subject"]):
         file_path += "/" + config["Filter"]["ToFolder_Subject"]
     elif any(keyword in data["Content"] for keyword in config["Filter"]["Content"]):
